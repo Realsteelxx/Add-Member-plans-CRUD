@@ -27,7 +27,7 @@
             </thead>
             <tbody>
             <%
-                String filePath = "C:\\Users\\USER\\Desktop\\OOP Project\\user.info\\user-data.txt";
+                String filePath = "C:\\Users\\yuthi\\Desktop\\Add Member plans\\Plan.info\\monthly-plan.txt";
                 File file = new File(filePath);
                 if (file.exists()) {
                     BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -40,6 +40,8 @@
                 <td><%= data[0] %></td>
                 <td><%= data[1] %></td>
                 <td><%= data[2] %></td>
+                <td><%= data[3] %></td>
+
 
                 <td>
                     <form action="edit-customer.jsp" method="get" class="d-inline">

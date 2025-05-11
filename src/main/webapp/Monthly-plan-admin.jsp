@@ -12,7 +12,7 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="mb-0 text-primary"><i class="bi bi-car-front"></i> Monthly Plans</h2>
-        <a href="add-customer.jsp" class="btn btn-success">
+        <a href="add-Monthly-plan.jsp" class="btn btn-success">
             <i class="bi bi-plus-lg"></i> Add New Monthly Plan
         </a>
     </div>
@@ -21,6 +21,7 @@
             <thead class="table-dark">
             <tr>
                 <th>Plan ID</th>
+                <th>Plane Name</th>
                 <th>Price(LKR)</th>
                 <th>Notes</th>
                 <th>Action</th>
@@ -28,31 +29,34 @@
             </thead>
             <tbody>
             <%
-                String filePath = "C:\\Users\\USER\\Desktop\\OOP Project\\user.info\\user-data.txt";
+                String filePath = "C:\\Users\\yuthi\\Desktop\\Add Member plans\\Plan.info\\monthly-plan.txt";
                 File file = new File(filePath);
                 if (file.exists()) {
                     BufferedReader reader = new BufferedReader(new FileReader(file));
                     String line;
                     while ((line = reader.readLine()) != null) {
                         String[] data = line.split(",");
-                        if (data.length == 3) {
+                        if (data.length == 4) {
             %>
             <tr>
                 <td><%= data[0] %></td>
                 <td><%= data[1] %></td>
                 <td><%= data[2] %></td>
+                <td><%= data[3] %></td>
+
 
                 <td>
-                    <form action="edit-customer.jsp" method="get" class="d-inline">
-                        <input type="hidden" name="name" value="<%= data[0] %>">
-                        <input type="hidden" name="email" value="<%= data[1] %>">
-                        <input type="hidden" name="phone" value="<%= data[2] %>">
+                    <form action="edit-Monthly-plan.jsp" method="get" class="d-inline">
+                        <input type="hidden" name="planId" value="<%= data[0] %>">
+                        <input type="hidden" name="planeName" value="<%= data[1] %>">
+                        <input type="hidden" name="price" value="<%= data[2] %>">
+                        <input type="hidden" name="notes" value="<%= data[3] %>">
                         <button type="submit" class="btn btn-sm btn-warning me-2">Edit</button>
                     </form>
 
-                    <form action="customersServlet" method="post" class="d-inline">
-                        <input type="hidden" name="action" value="deleteCustomer">
-                        <input type="hidden" name="name" value="<%= data[0] %>">
+                    <form action="monthlyPlanServlet" method="post" class="d-inline">
+                        <input type="hidden" name="action" value="deleteMonthlyplan">
+                        <input type="hidden" name="planId" value="<%= data[0] %>">
                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this vehicle?');">Delete</button>
                     </form>
 
