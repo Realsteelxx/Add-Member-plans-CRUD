@@ -11,19 +11,18 @@
 
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-0 text-primary"><i class="bi bi-car-front"></i> All Customers</h2>
-        <a href="add-customer.jsp" class="btn btn-success">
-            <i class="bi bi-plus-lg"></i> Add New Customer
-        </a>
+        <h2 class="mb-0 text-primary"><i class="bi bi-car-front"></i> Monthly Plans</h2>
+
     </div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover text-center">
             <thead class="table-dark">
             <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Contact Number</th>
-                <th>Action</th>
+                <th>Plan ID</th>
+                <th>Price(LKR)</th>
+                <th>Notes</th>
+
+
             </tr>
             </thead>
             <tbody>
