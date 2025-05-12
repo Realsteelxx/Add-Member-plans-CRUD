@@ -64,7 +64,7 @@ public class monthlyPlanDAO {
             if(monthlyPlanList.get(i).getPlanId().equals(originalID)) {
                 monthlyPlanList.set(i, UpdatedMonthlyPlan);
                 saveAllmonthlyPlans();
-                break;
+
             }
         }
     }

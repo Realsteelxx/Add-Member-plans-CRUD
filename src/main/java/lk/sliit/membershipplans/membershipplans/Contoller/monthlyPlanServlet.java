@@ -14,7 +14,7 @@ import java.util.List;
 @WebServlet("/monthlyPlanServlet")
 public class monthlyPlanServlet extends HttpServlet {
     private static final String DIRECTORY = "C:\\Users\\yuthi\\Desktop\\Add Member plans\\Plan.info";
-    private static final String DATA_FILE = DIRECTORY + "\\monthly-plan.txt";
+    private static final String DATA_FILE = DIRECTORY +"\\monthly-plan.txt";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -101,8 +101,12 @@ public class monthlyPlanServlet extends HttpServlet {
             while((line = reader.readLine()) != null) {
                 if(line.startsWith(originalID + ",")) {
                     line = id + "," + name + "," + price + "," + note;
+
                 }
+
                 lines.add(line);
+
+
             }
         }
 

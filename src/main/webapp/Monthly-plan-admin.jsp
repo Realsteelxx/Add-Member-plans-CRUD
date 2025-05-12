@@ -48,7 +48,7 @@
                 <td>
                     <form action="edit-Monthly-plan.jsp" method="get" class="d-inline">
                         <input type="hidden" name="planId" value="<%= data[0] %>">
-                        <input type="hidden" name="planeName" value="<%= data[1] %>">
+                        <input type="hidden" name="planName" value="<%= data[1] %>">
                         <input type="hidden" name="price" value="<%= data[2] %>">
                         <input type="hidden" name="notes" value="<%= data[3] %>">
                         <button type="submit" class="btn btn-sm btn-warning me-2">Edit</button>
