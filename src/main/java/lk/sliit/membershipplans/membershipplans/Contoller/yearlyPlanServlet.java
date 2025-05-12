@@ -1,6 +1,5 @@
 package lk.sliit.membershipplans.membershipplans.Contoller;
 
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,31 +10,34 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/monthlyPlanServlet")
-public class monthlyPlanServlet extends HttpServlet {
+@WebServlet("/yearlyPlanServlet")
+public class yearlyPlanServlet extends HttpServlet {
     private static final String DIRECTORY = "C:\\Users\\yuthi\\Desktop\\Add Member plans\\Plan.info";
-    private static final String DATA_FILE = DIRECTORY +"\\monthly-plan.txt";
+    private static final String DATA_FILE = DIRECTORY +"\\yearly-plan.txt";
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
-        if("addMonthlyplan".equals(action)) {
-            addMonthlyplan(request,response);
+        if("addYearlyplan".equals(action)) {
+            addYearlyplan(request,response);
         }
-        else if("deleteMonthlyplan".equals(action)) {
-            deleteMonthlyplan(request,response);
-        } else if ("updateMonthlyplan".equals(action)) {
-            updateMonthlyplan(request,response);
+        else if("deleteYearlyplan".equals(action)) {
+            deleteYearlyplan(request,response);
+        } else if ("updateYearlyplan".equals(action)) {
+            updateYearlyplan(request,response);
         }
     }
 
-    private void addMonthlyplan(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void addYearlyplan(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String id = request.getParameter("planId");
         String name = request.getParameter("planName");
         String price = request.getParameter("price");
-        String note = request.getParameter("notes");
+        String addons = request.getParameter("addons");
+        String subTotal = request.getParameter("subTotal");
+        String discount = request.getParameter("discount");
+        String finalPrice = request.getParameter("finalPrice");
 
-        if(id == null || name == null || price == null || note == null) {
+        if(id == null || name == null || price == null || addons == null|| subTotal == null|| discount == null||finalPrice == null) {
             response.getWriter().println("All fields are required");
             return;
         }
@@ -44,13 +46,13 @@ public class monthlyPlanServlet extends HttpServlet {
         new File(DIRECTORY).mkdirs();
 
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(DATA_FILE,true))) {
-            writer.write(id + "," + name + "," + price + "," + note);
+            writer.write(id + "," + name + "," + price + "," + addons + "," + subTotal + "," + discount + "," + finalPrice);
             writer.newLine();
         }
-        response.sendRedirect("Monthly-plan-admin.jsp");
+        response.sendRedirect("Yearly-plan-admin.jsp");
     }
 
-    private void deleteMonthlyplan(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void deleteYearlyplan(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String idToDelete = request.getParameter("planId");
 
         File inputFile = new File(DATA_FILE);
@@ -76,17 +78,20 @@ public class monthlyPlanServlet extends HttpServlet {
 
         inputFile.delete();
         tempFile.renameTo(inputFile);
-        response.sendRedirect("Monthly-plan-admin.jsp");
+        response.sendRedirect("Yearly-plan-admin.jsp");
     }
 
-    private void updateMonthlyplan(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void updateYearlyplan(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String originalID = request.getParameter("originalID");
         String id = request.getParameter("planId");
         String name = request.getParameter("planName");
         String price = request.getParameter("price");
-        String note = request.getParameter("notes");
+        String addons = request.getParameter("addons");
+        String subTotal = request.getParameter("subTotal");
+        String discount = request.getParameter("discount");
+        String finalPrice = request.getParameter("finalPrice");
 
-        if(id == null || name == null || price == null || note == null) {
+        if(id == null || name == null || price == null || addons == null || subTotal == null|| discount == null||finalPrice == null) {
             response.getWriter().println("All fields are required");
             return;
         }
@@ -100,7 +105,7 @@ public class monthlyPlanServlet extends HttpServlet {
             String line;
             while((line = reader.readLine()) != null) {
                 if(line.startsWith(originalID + ",")) {
-                    line = id + "," + name + "," + price + "," + note;
+                    line = id + "," + name + "," + price + "," +addons+ "," +subTotal + "," +discount + "," +finalPrice;
 
                 }
 
@@ -119,6 +124,8 @@ public class monthlyPlanServlet extends HttpServlet {
 
         inputFile.delete();
         tempFile.renameTo(inputFile);
-        response.sendRedirect("Monthly-plan-admin.jsp");
+        response.sendRedirect("Yearly-plan-admin.jsp");
     }
+
+
 }

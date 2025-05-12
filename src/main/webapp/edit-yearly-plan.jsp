@@ -10,30 +10,54 @@
 <body>
 <div class="container mt-5">
     <h2 class="mb-4">Edit Customer</h2>
-    <form action="customersServlet" method="post">
-        <input type="hidden" name="action" value="updateCustomer">
-        <input type="hidden" name="originalName" value="<%= request.getParameter("name") %>">
+    <form action="yearlyPlanServlet" method="post">
+        <input type="hidden" name="action" value="updateYearlyplan">
+        <input type="hidden" name="originaID" value="<%= request.getParameter("planID") %>">
 
         <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name"
-                   value="<%= request.getParameter("name") %>" required>
+            <label for="planId" class="form-label">Plan ID</label>
+            <input type="text" class="form-control" id="planId" name="planId"
+                   value="<%= request.getParameter("planId") %>" required>
         </div>
 
         <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email"
-                   value="<%= request.getParameter("email") %>" required>
+            <label for="planName" class="form-label">Plan Name</label>
+            <input type="text" class="form-control" id="planName" name="planName"
+                   value="<%= request.getParameter("planName") %>" required>
         </div>
 
         <div class="mb-3">
-            <label for="number" class="form-label">Phone Number</label>
-            <input type="text" class="form-control" id="number" name="number"
-                   value="<%= request.getParameter("phone") %>" required>
+            <label for="price" class="form-label">Price</label>
+            <input type="text" class="form-control" id="price" name="price"
+                   value="<%= request.getParameter("price") %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="addons" class="form-label">Add-ons</label>
+            <input type="text" class="form-control" id="addons" name="addons"
+                   value="<%= request.getParameter("addons") %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="subTotal" class="form-label">Sub Total</label>
+            <input type="text" class="form-control" id="subTotal" name="subTotal"
+                   value="<%= request.getParameter("subTotal") %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="discount" class="form-label">Discount</label>
+            <input type="text" class="form-control" id="discount" name="discount"
+                   value="<%= request.getParameter("discount") %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="finalPrice" class="form-label">Final Price</label>
+            <input type="text" class="form-control" id="finalPrice" name="finalPrice"
+                   value="<%= request.getParameter("finalPrice") %>" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Update Customer</button>
-        <a href="customer-list.jsp" class="btn btn-secondary">Cancel</a>
+
+
+
+
+        <button type="submit" class="btn btn-primary">Update Plan</button>
+        <a href="Yearly-plan-admin.jsp" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 
