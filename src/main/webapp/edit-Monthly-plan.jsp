@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h2 class="mb-4">Edit Customer</h2>
+    <h2 class="mb-4">Edit Monthly Plan</h2>
     <form action="monthlyPlanServlet" method="post">
         <input type="hidden" name="action" value="updateMonthlyplan">
         <input type="hidden" name="originalID" value="<%= request.getParameter("planId") %>">

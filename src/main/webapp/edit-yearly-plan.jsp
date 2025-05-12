@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Customer</title>
+    <title>Edit Yearly Plan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div class="container mt-5">
-    <h2 class="mb-4">Edit Customer</h2>
+    <h2 class="mb-4">Edit Plan</h2>
     <form action="yearlyPlanServlet" method="post">
         <input type="hidden" name="action" value="updateYearlyplan">
-        <input type="hidden" name="originaID" value="<%= request.getParameter("planID") %>">
+        <input type="hidden" name="originalID" value="<%= request.getParameter("planId") %>">
 
         <div class="mb-3">
             <label for="planId" class="form-label">Plan ID</label>

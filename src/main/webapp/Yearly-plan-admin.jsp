@@ -23,6 +23,7 @@
                 <th>Plan ID</th>
                 <th>Plan</th>
                 <th>Base Price(LKR)</th>
+                <th>Addons(LKR)(LKR)</th>
                 <th>Subtotal</th>
                 <th>Discount</th>
                 <th>Final Price</th>
@@ -47,6 +48,7 @@
                 <td><%= data[3] %></td>
                 <td><%= data[4] %></td>
                 <td><%= data[5] %></td>
+                <td><%= data[6] %></td>
 
                 <td>
                     <form action="edit-yearly-plan.jsp" method="get" class="d-inline">

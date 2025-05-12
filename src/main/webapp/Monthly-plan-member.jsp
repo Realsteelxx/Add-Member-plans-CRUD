@@ -19,6 +19,7 @@
             <thead class="table-dark">
             <tr>
                 <th>Plan ID</th>
+                <th>Plan Name</th>
                 <th>Price(LKR)</th>
                 <th>Notes</th>
 
@@ -34,7 +35,7 @@
                     String line;
                     while ((line = reader.readLine()) != null) {
                         String[] data = line.split(",");
-                        if (data.length == 3) {
+                        if (data.length == 4) {
             %>
             <tr>
                 <td><%= data[0] %></td>
@@ -43,21 +44,7 @@
                 <td><%= data[3] %></td>
 
 
-                <td>
-                    <form action="edit-customer.jsp" method="get" class="d-inline">
-                        <input type="hidden" name="name" value="<%= data[0] %>">
-                        <input type="hidden" name="email" value="<%= data[1] %>">
-                        <input type="hidden" name="phone" value="<%= data[2] %>">
-                        <button type="submit" class="btn btn-sm btn-warning me-2">Edit</button>
-                    </form>
 
-                    <form action="customersServlet" method="post" class="d-inline">
-                        <input type="hidden" name="action" value="deleteCustomer">
-                        <input type="hidden" name="name" value="<%= data[0] %>">
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this vehicle?');">Delete</button>
-                    </form>
-
-                </td>
             </tr>
             <%
                         }

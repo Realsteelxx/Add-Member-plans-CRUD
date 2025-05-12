@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vehicle List</title>
+    <title>Plans List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -21,6 +21,7 @@
                 <th>Plan ID</th>
                 <th>Plan</th>
                 <th>Base Price(LKR)</th>
+                <th>Addons(LKR)(LKR)</th>
                 <th>Subtotal</th>
                 <th>Discount</th>
                 <th>Final Price</th>
@@ -28,35 +29,25 @@
             </thead>
             <tbody>
             <%
-                String filePath = "C:\\Users\\USER\\Desktop\\OOP Project\\user.info\\user-data.txt";
+                String filePath = "C:\\Users\\yuthi\\Desktop\\Add Member plans\\Plan.info\\yearly-plan.txt";
                 File file = new File(filePath);
                 if (file.exists()) {
                     BufferedReader reader = new BufferedReader(new FileReader(file));
                     String line;
                     while ((line = reader.readLine()) != null) {
                         String[] data = line.split(",");
-                        if (data.length == 3) {
+                        if (data.length == 7) {
             %>
             <tr>
                 <td><%= data[0] %></td>
                 <td><%= data[1] %></td>
                 <td><%= data[2] %></td>
+                <td><%= data[3] %></td>
+                <td><%= data[4] %></td>
+                <td><%= data[5] %></td>
+                <td><%= data[6] %></td>
 
-                <td>
-                    <form action="edit-customer.jsp" method="get" class="d-inline">
-                        <input type="hidden" name="name" value="<%= data[0] %>">
-                        <input type="hidden" name="email" value="<%= data[1] %>">
-                        <input type="hidden" name="phone" value="<%= data[2] %>">
-                        <button type="submit" class="btn btn-sm btn-warning me-2">Edit</button>
-                    </form>
 
-                    <form action="customersServlet" method="post" class="d-inline">
-                        <input type="hidden" name="action" value="deleteCustomer">
-                        <input type="hidden" name="name" value="<%= data[0] %>">
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this vehicle?');">Delete</button>
-                    </form>
-
-                </td>
             </tr>
             <%
                         }
